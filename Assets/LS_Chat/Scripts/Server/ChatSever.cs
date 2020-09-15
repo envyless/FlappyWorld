@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -18,7 +19,14 @@ public class ChatSever : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance != null)
+        {
+            DestroyImmediate(this.gameObject);
+            return;
+        }
+
         Instance = this;
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -85,6 +93,9 @@ public class ChatSever : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (Instance != this)
+            return;
+
         // Disconnect the client
         Debug.Log("Client disconnecting...");
         client.DisconnectAndStop();
@@ -122,7 +133,27 @@ public class ChatSever : MonoBehaviour
 
         protected override void OnReceived(byte[] buffer, long offset, long size)
         {
-            Debug.Log(Encoding.UTF8.GetString(buffer, (int)offset, (int)size));
+            try
+            {
+                var users = RspUserUpdate.Parser.ParseFrom(buffer, (int)offset, (int)size) as RspUserUpdate;
+                if (users == null)
+                {
+                    Debug.Log(Encoding.UTF8.GetString(buffer, (int)offset, (int)size));
+                }
+                else
+                {
+                    foreach (var user in users.Users)
+                    {
+                        UserMnanger.Instance.UpdateUser(user);
+                        Debug.Log("user name : " + user.UserId + "\nx : " + user.X + "\ny : " + user.Y + "\nisdead : " + user.IsDead);
+                    }
+
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.LogError("e : " + e);
+            }
         }
 
         protected override void OnError(SocketError error)

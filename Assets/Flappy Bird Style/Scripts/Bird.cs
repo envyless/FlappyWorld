@@ -51,17 +51,23 @@ public class Bird : MonoBehaviour
 		}).AddTo(this);
 	}
 
+	float AITime = 3;
+
 	void Update()
 	{
 		//Don't allow control if the bird has died.
 		if (isDead == false) 
 		{
 			//Look for input to trigger a "flap".
-			if (Input.GetMouseButtonDown(0)) 
+			if (AITime > Random.Range(0,100) && transform.position.y < 4) 
 			{
 				//...tell the animator about it and then...
 				anim.SetTrigger("Flap");
 				//...zero out the birds current y velocity before...
+
+				if (rb2d == null)
+					return;
+
 				rb2d.velocity = Vector2.zero;
 				//	new Vector2(rb2d.velocity.x, 0);
 				//..giving the bird some upward force.
@@ -72,9 +78,15 @@ public class Bird : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
+		if (rb2d == null)
+			return;
+
 		// Zero out the bird's velocity
 		rb2d.velocity = Vector2.zero;
 		// If the bird collides with something set it to dead...
+
+		if (other.gameObject.name.Contains("Bird"))
+			return;
 		isDead = true;
 		//...tell the Animator about it...
 		anim.SetTrigger ("Die");
@@ -92,7 +104,6 @@ public class Bird : MonoBehaviour
 			req.Y = transform.position.y;
 			req.UserId = LSRequests.Instance.UserName.Value;
 			var ba = req.ToByteArray();
-			Debug.LogError("x : " + req.X + "\ny: " + req.Y);
 			ChatSever.client.SendAsync(ba);
 		}
     }

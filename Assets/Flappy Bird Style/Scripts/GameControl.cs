@@ -38,11 +38,13 @@ public class GameControl : MonoBehaviour
     void Update()
 	{
 		//If the game is over and the player has pressed some input...
-		if (gameOver && Input.GetMouseButtonDown(0)) 
+		if (gameOver && Random.Range(0, 160) < 3) 
 		{
 			//...reload the current scene.
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
+
+		UserMnanger.Instance.Update();
 	}
 
 	public void BirdScored()

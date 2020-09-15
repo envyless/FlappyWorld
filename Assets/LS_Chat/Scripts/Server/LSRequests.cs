@@ -16,7 +16,7 @@ public class LSRequests : MonoBehaviour
 
     private void Init()
     {
-        UserName.Value = PlayerPrefs.GetString("UserName", "");
+        UserName.Value = "Test " + UnityEngine.Random.Range(0, 10000); //PlayerPrefs.GetString("UserName", "");
     }
 
 
