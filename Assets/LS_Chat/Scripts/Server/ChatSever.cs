@@ -62,7 +62,7 @@ public class ChatSever : MonoBehaviour
 
         Debug.Log("Press Enter to stop the client or '!' to reconnect the client...");
 
-        IsConnected.Value = true;
+        //IsConnected.Value = true;
         /*// Perform text input
         for (; ; )
         {
@@ -85,8 +85,10 @@ public class ChatSever : MonoBehaviour
             //data
             
             // Send the entered text to the chat server
-            //client.SendAsync(line);
+            
         }  */
+
+        
         yield return null;
     }
 
@@ -135,7 +137,8 @@ public class ChatSever : MonoBehaviour
         {
             try
             {
-                var users = RspUserUpdate.Parser.ParseFrom(buffer, (int)offset, (int)size) as RspUserUpdate;
+                Debug.Log(Encoding.UTF8.GetString(buffer, (int)offset, (int)size));
+                /*var users = RspUserUpdate.Parser.ParseFrom(buffer, (int)offset, (int)size) as RspUserUpdate;
                 if (users == null)
                 {
                     Debug.Log(Encoding.UTF8.GetString(buffer, (int)offset, (int)size));
@@ -147,8 +150,7 @@ public class ChatSever : MonoBehaviour
                         UserMnanger.Instance.UpdateUser(user);
                         Debug.Log("user name : " + user.UserId + "\nx : " + user.X + "\ny : " + user.Y + "\nisdead : " + user.IsDead);
                     }
-
-                }
+                }*/
             }
             catch(Exception e)
             {

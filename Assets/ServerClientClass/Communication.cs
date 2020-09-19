@@ -24,24 +24,210 @@ namespace Google.Protobuf {
     static CommunicationReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNDb21tdW5pY2F0aW9uLnByb3RvEg9nb29nbGUucHJvdG9idWYiRgoNUmVx",
-            "VXNlclVwZGF0ZRIPCgd1c2VyX2lkGAEgASgJEgkKAXgYAiABKAISCQoBeRgD",
-            "IAEoAhIOCgZpc0RlYWQYBCABKAgiPgoNUnNwVXNlclVwZGF0ZRItCgV1c2Vy",
-            "cxgBIAMoCzIeLmdvb2dsZS5wcm90b2J1Zi5SZXFVc2VyVXBkYXRlMlwKCkZv",
-            "b1NlcnZpY2USTgoMR2V0U29tZXRoaW5nEh4uZ29vZ2xlLnByb3RvYnVmLlJl",
-            "cVVzZXJVcGRhdGUaHi5nb29nbGUucHJvdG9idWYuUnNwVXNlclVwZGF0ZWIG",
-            "cHJvdG8z"));
+            "ChNDb21tdW5pY2F0aW9uLnByb3RvEg9nb29nbGUucHJvdG9idWYiMwoKUmVx",
+            "VXNlck5ldxIPCgd1c2VyX2lkGAEgASgJEgkKAXgYAiABKAISCQoBeRgDIAEo",
+            "AiJGCg1SZXFVc2VyVXBkYXRlEg8KB3VzZXJfaWQYASABKAkSCQoBeBgCIAEo",
+            "AhIJCgF5GAMgASgCEg4KBmlzRGVhZBgEIAEoCCKEAQoKUmVxdWVzdFJQQxIx",
+            "CgpyZXFVc2VyTmV3GAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLlJlcVVzZXJO",
+            "ZXdIABI3Cg1yZXFVc2VyVXBkYXRlGAIgASgLMh4uZ29vZ2xlLnByb3RvYnVm",
+            "LlJlcVVzZXJVcGRhdGVIAEIKCghyZXF1ZXN0c2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.ReqUserNew), global::Google.Protobuf.ReqUserNew.Parser, new[]{ "UserId", "X", "Y" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.ReqUserUpdate), global::Google.Protobuf.ReqUserUpdate.Parser, new[]{ "UserId", "X", "Y", "IsDead" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.RspUserUpdate), global::Google.Protobuf.RspUserUpdate.Parser, new[]{ "Users" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.RequestRPC), global::Google.Protobuf.RequestRPC.Parser, new[]{ "ReqUserNew", "ReqUserUpdate" }, new[]{ "Requests" }, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
+  public sealed partial class ReqUserNew : pb::IMessage<ReqUserNew> {
+    private static readonly pb::MessageParser<ReqUserNew> _parser = new pb::MessageParser<ReqUserNew>(() => new ReqUserNew());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ReqUserNew> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Protobuf.CommunicationReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReqUserNew() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReqUserNew(ReqUserNew other) : this() {
+      userId_ = other.userId_;
+      x_ = other.x_;
+      y_ = other.y_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReqUserNew Clone() {
+      return new ReqUserNew(this);
+    }
+
+    /// <summary>Field number for the "user_id" field.</summary>
+    public const int UserIdFieldNumber = 1;
+    private string userId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string UserId {
+      get { return userId_; }
+      set {
+        userId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "x" field.</summary>
+    public const int XFieldNumber = 2;
+    private float x_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "y" field.</summary>
+    public const int YFieldNumber = 3;
+    private float y_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Y {
+      get { return y_; }
+      set {
+        y_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ReqUserNew);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ReqUserNew other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (UserId != other.UserId) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (UserId.Length != 0) hash ^= UserId.GetHashCode();
+      if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
+      if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (UserId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(UserId);
+      }
+      if (X != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Y);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (UserId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(UserId);
+      }
+      if (X != 0F) {
+        size += 1 + 4;
+      }
+      if (Y != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ReqUserNew other) {
+      if (other == null) {
+        return;
+      }
+      if (other.UserId.Length != 0) {
+        UserId = other.UserId;
+      }
+      if (other.X != 0F) {
+        X = other.X;
+      }
+      if (other.Y != 0F) {
+        Y = other.Y;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            UserId = input.ReadString();
+            break;
+          }
+          case 21: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Y = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class ReqUserUpdate : pb::IMessage<ReqUserUpdate> {
     private static readonly pb::MessageParser<ReqUserUpdate> _parser = new pb::MessageParser<ReqUserUpdate>(() => new ReqUserUpdate());
     private pb::UnknownFieldSet _unknownFields;
@@ -50,7 +236,7 @@ namespace Google.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.CommunicationReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Google.Protobuf.CommunicationReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -255,15 +441,15 @@ namespace Google.Protobuf {
 
   }
 
-  public sealed partial class RspUserUpdate : pb::IMessage<RspUserUpdate> {
-    private static readonly pb::MessageParser<RspUserUpdate> _parser = new pb::MessageParser<RspUserUpdate>(() => new RspUserUpdate());
+  public sealed partial class RequestRPC : pb::IMessage<RequestRPC> {
+    private static readonly pb::MessageParser<RequestRPC> _parser = new pb::MessageParser<RequestRPC>(() => new RequestRPC());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<RspUserUpdate> Parser { get { return _parser; } }
+    public static pb::MessageParser<RequestRPC> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Protobuf.CommunicationReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Google.Protobuf.CommunicationReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -272,54 +458,97 @@ namespace Google.Protobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RspUserUpdate() {
+    public RequestRPC() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RspUserUpdate(RspUserUpdate other) : this() {
-      users_ = other.users_.Clone();
+    public RequestRPC(RequestRPC other) : this() {
+      switch (other.RequestsCase) {
+        case RequestsOneofCase.ReqUserNew:
+          ReqUserNew = other.ReqUserNew.Clone();
+          break;
+        case RequestsOneofCase.ReqUserUpdate:
+          ReqUserUpdate = other.ReqUserUpdate.Clone();
+          break;
+      }
+
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RspUserUpdate Clone() {
-      return new RspUserUpdate(this);
+    public RequestRPC Clone() {
+      return new RequestRPC(this);
     }
 
-    /// <summary>Field number for the "users" field.</summary>
-    public const int UsersFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Google.Protobuf.ReqUserUpdate> _repeated_users_codec
-        = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.ReqUserUpdate.Parser);
-    private readonly pbc::RepeatedField<global::Google.Protobuf.ReqUserUpdate> users_ = new pbc::RepeatedField<global::Google.Protobuf.ReqUserUpdate>();
+    /// <summary>Field number for the "reqUserNew" field.</summary>
+    public const int ReqUserNewFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Google.Protobuf.ReqUserUpdate> Users {
-      get { return users_; }
+    public global::Google.Protobuf.ReqUserNew ReqUserNew {
+      get { return requestsCase_ == RequestsOneofCase.ReqUserNew ? (global::Google.Protobuf.ReqUserNew) requests_ : null; }
+      set {
+        requests_ = value;
+        requestsCase_ = value == null ? RequestsOneofCase.None : RequestsOneofCase.ReqUserNew;
+      }
+    }
+
+    /// <summary>Field number for the "reqUserUpdate" field.</summary>
+    public const int ReqUserUpdateFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.ReqUserUpdate ReqUserUpdate {
+      get { return requestsCase_ == RequestsOneofCase.ReqUserUpdate ? (global::Google.Protobuf.ReqUserUpdate) requests_ : null; }
+      set {
+        requests_ = value;
+        requestsCase_ = value == null ? RequestsOneofCase.None : RequestsOneofCase.ReqUserUpdate;
+      }
+    }
+
+    private object requests_;
+    /// <summary>Enum of possible cases for the "requests" oneof.</summary>
+    public enum RequestsOneofCase {
+      None = 0,
+      ReqUserNew = 1,
+      ReqUserUpdate = 2,
+    }
+    private RequestsOneofCase requestsCase_ = RequestsOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestsOneofCase RequestsCase {
+      get { return requestsCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearRequests() {
+      requestsCase_ = RequestsOneofCase.None;
+      requests_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as RspUserUpdate);
+      return Equals(other as RequestRPC);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(RspUserUpdate other) {
+    public bool Equals(RequestRPC other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!users_.Equals(other.users_)) return false;
+      if (!object.Equals(ReqUserNew, other.ReqUserNew)) return false;
+      if (!object.Equals(ReqUserUpdate, other.ReqUserUpdate)) return false;
+      if (RequestsCase != other.RequestsCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= users_.GetHashCode();
+      if (requestsCase_ == RequestsOneofCase.ReqUserNew) hash ^= ReqUserNew.GetHashCode();
+      if (requestsCase_ == RequestsOneofCase.ReqUserUpdate) hash ^= ReqUserUpdate.GetHashCode();
+      hash ^= (int) requestsCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -333,7 +562,14 @@ namespace Google.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      users_.WriteTo(output, _repeated_users_codec);
+      if (requestsCase_ == RequestsOneofCase.ReqUserNew) {
+        output.WriteRawTag(10);
+        output.WriteMessage(ReqUserNew);
+      }
+      if (requestsCase_ == RequestsOneofCase.ReqUserUpdate) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ReqUserUpdate);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -342,7 +578,12 @@ namespace Google.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += users_.CalculateSize(_repeated_users_codec);
+      if (requestsCase_ == RequestsOneofCase.ReqUserNew) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqUserNew);
+      }
+      if (requestsCase_ == RequestsOneofCase.ReqUserUpdate) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqUserUpdate);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -350,11 +591,25 @@ namespace Google.Protobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(RspUserUpdate other) {
+    public void MergeFrom(RequestRPC other) {
       if (other == null) {
         return;
       }
-      users_.Add(other.users_);
+      switch (other.RequestsCase) {
+        case RequestsOneofCase.ReqUserNew:
+          if (ReqUserNew == null) {
+            ReqUserNew = new global::Google.Protobuf.ReqUserNew();
+          }
+          ReqUserNew.MergeFrom(other.ReqUserNew);
+          break;
+        case RequestsOneofCase.ReqUserUpdate:
+          if (ReqUserUpdate == null) {
+            ReqUserUpdate = new global::Google.Protobuf.ReqUserUpdate();
+          }
+          ReqUserUpdate.MergeFrom(other.ReqUserUpdate);
+          break;
+      }
+
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -367,7 +622,21 @@ namespace Google.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            users_.AddEntriesFrom(input, _repeated_users_codec);
+            global::Google.Protobuf.ReqUserNew subBuilder = new global::Google.Protobuf.ReqUserNew();
+            if (requestsCase_ == RequestsOneofCase.ReqUserNew) {
+              subBuilder.MergeFrom(ReqUserNew);
+            }
+            input.ReadMessage(subBuilder);
+            ReqUserNew = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Google.Protobuf.ReqUserUpdate subBuilder = new global::Google.Protobuf.ReqUserUpdate();
+            if (requestsCase_ == RequestsOneofCase.ReqUserUpdate) {
+              subBuilder.MergeFrom(ReqUserUpdate);
+            }
+            input.ReadMessage(subBuilder);
+            ReqUserUpdate = subBuilder;
             break;
           }
         }

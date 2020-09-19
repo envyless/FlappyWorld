@@ -98,13 +98,17 @@ public class Bird : MonoBehaviour
     {
 		if(isPlayer)
 		{
+			RequestRPC reqRPC = new RequestRPC();
+
 			ReqUserUpdate req = new ReqUserUpdate();
 			req.IsDead = isDead;
 			req.X = birdX.transform.position.x;
 			req.Y = transform.position.y;
 			req.UserId = LSRequests.Instance.UserName.Value;
 			var ba = req.ToByteArray();
-			ChatSever.client.SendAsync(ba);
+
+			reqRPC.ReqUserUpdate = req;
+			ChatSever.client.SendAsync(reqRPC.ToByteArray());
 		}
     }
 
