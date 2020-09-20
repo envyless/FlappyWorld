@@ -13,33 +13,30 @@ using TcpClient = NetCoreServer.TcpClient;
 public class ChatSever : MonoBehaviour
 {
     public static ChatSever Instance;
-
     public ReactiveProperty<bool> IsConnected = new ReactiveProperty<bool>();
-    public static ChatClient client;
+    public static ChatClient client;    
 
     private void Awake()
     {
         if(Instance != null)
         {
-            DestroyImmediate(this.gameObject);
+            Destroy(gameObject);
             return;
         }
-
         Instance = this;
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);        
     }
 
     private void Start()
     {        
-        StartCoroutine(ConnectServer());
-        
+        StartCoroutine(ConnectServer()); 
     }
 
     IEnumerator ConnectServer()
     {
         string[] args = new string[0];
-        // TCP server address
-        string address = "127.0.0.1";
+        // TCP server address, WSL2 carefull this ip,
+        string address = "172.26.35.60";
         if (args.Length > 0)
             address = args[0];
 
@@ -60,35 +57,12 @@ public class ChatSever : MonoBehaviour
         client.ConnectAsync();
         Debug.Log("Done!");
 
-        Debug.Log("Press Enter to stop the client or '!' to reconnect the client...");
-
-        //IsConnected.Value = true;
-        /*// Perform text input
-        for (; ; )
+        while(!client.IsConnected)
         {
             yield return null;
-            ++a;
-            if (a > 200)
-                a = 0;
-            string line = "TEst : "+a;
-            if (string.IsNullOrEmpty(line))
-                break;
+        }
 
-            // Disconnect the client
-            if (line == "!")
-            {
-                Debug.Log("Client disconnecting...");
-                client.DisconnectAsync();
-                Debug.Log("Done!");
-                continue;
-            }
-            //data
-            
-            // Send the entered text to the chat server
-            
-        }  */
-
-        
+        this.IsConnected.Value = true;        
         yield return null;
     }
 
@@ -137,7 +111,8 @@ public class ChatSever : MonoBehaviour
         {
             try
             {
-                Debug.Log(Encoding.UTF8.GetString(buffer, (int)offset, (int)size));
+                var req = Google.Protobuf.RequestRPC.Parser.ParseFrom(buffer, (int)offset, (int)size);
+                RPCManager.Instance.DoAction(req);
                 /*var users = RspUserUpdate.Parser.ParseFrom(buffer, (int)offset, (int)size) as RspUserUpdate;
                 if (users == null)
                 {
@@ -151,6 +126,8 @@ public class ChatSever : MonoBehaviour
                         Debug.Log("user name : " + user.UserId + "\nx : " + user.X + "\ny : " + user.Y + "\nisdead : " + user.IsDead);
                     }
                 }*/
+
+                //Connected
             }
             catch(Exception e)
             {

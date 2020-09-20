@@ -33,6 +33,8 @@ public class GameControl : MonoBehaviour
 		LSRequests.Instance.UserName.Subscribe(userName => {
 			Time.timeScale = userName == null || userName == "" ? 0 : gameSpeed;
 		}).AddTo(this);
+
+		UserMnanger.Instance.SetUp();
 	}
 
     void Update()
